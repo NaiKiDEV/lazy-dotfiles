@@ -19,10 +19,6 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     {
-      "folke/trouble.nvim",
-      opts = { use_diagnostic_signs = true },
-    },
-    {
       "sainnhe/gruvbox-material",
       lazy = false,
       priority = 1000,
