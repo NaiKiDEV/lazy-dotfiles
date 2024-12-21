@@ -67,6 +67,7 @@ require("lazy").setup({
         gitbrowse = { enabled = false },
         indent = { enabled = true },
         input = { enabled = true },
+        notify = { enabled = true },
         notifier = {
           enabled = true,
           timeout = 3000,
@@ -75,10 +76,10 @@ require("lazy").setup({
         scroll = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
+        scope = { enabled = true },
         styles = {
-          notification = {},
+          notification = { relative = false },
         },
-        zen = { enabled = false },
       },
       keys = {
         {
@@ -205,7 +206,6 @@ require("lazy").setup({
           show_hidden = true,
         },
       },
-      -- Optional dependencies
       dependencies = { { "echasnovski/mini.icons", opts = {} } },
       -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     },
