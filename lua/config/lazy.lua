@@ -19,33 +19,32 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    -- Forced theme (Gruvbox or Github Dark)
+    -- Theme
     {
       "sainnhe/gruvbox-material",
-      lazy = false,
       priority = 1000,
+      lazy = false,
       config = function()
         vim.cmd.set("termguicolors")
         vim.g.gruvbox_material_background = "hard"
-        vim.g.gruvbox_material_foreground = "original"
+        vim.g.gruvbox_material_foreground = "material"
         vim.g.gruvbox_material_better_performance = 1
         vim.cmd.colorscheme("gruvbox-material")
       end,
     },
-
-    --[[
     {
-      "projekt0n/github-nvim-theme",
-      lazy = false, -- make sure we load this during startup if it is your main colorscheme
-      priority = 1000, -- make sure to load this before all the other start plugins
-      config = function()
-        require("github-theme").setup({})
-
-        -- Setting the theme, this will make it permanent
-        vim.cmd("colorscheme github_dark_default")
+      "nvim-lualine/lualine.nvim",
+      event = "VeryLazy",
+      opts = function(_, opts)
+        opts.sections = {
+          lualine_z = {
+            function()
+              return " " .. os.date("%c")
+            end,
+          },
+        }
       end,
     },
-    --]]
 
     {
       "folke/snacks.nvim",
@@ -70,16 +69,14 @@ require("lazy").setup({
         notify = { enabled = true },
         notifier = {
           enabled = true,
-          timeout = 3000,
+          timeout = 5000,
         },
         quickfile = { enabled = true },
         scroll = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
         scope = { enabled = true },
-        styles = {
-          notification = { relative = false },
-        },
+        styles = {},
       },
       keys = {
         {
@@ -192,7 +189,7 @@ require("lazy").setup({
         vim.list_extend(opts.ensure_installed, {
           "go",
           "tsx",
-          "typescript",
+          "typescript"
         })
       end,
     },
@@ -207,7 +204,6 @@ require("lazy").setup({
         },
       },
       dependencies = { { "echasnovski/mini.icons", opts = {} } },
-      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     },
 
     {
