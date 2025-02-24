@@ -32,19 +32,6 @@ require("lazy").setup({
         vim.cmd.colorscheme("gruvbox-material")
       end,
     },
-    {
-      "nvim-lualine/lualine.nvim",
-      event = "VeryLazy",
-      opts = function(_, opts)
-        opts.sections = {
-          lualine_z = {
-            function()
-              return " " .. os.date("%c")
-            end,
-          },
-        }
-      end,
-    },
 
     {
       "folke/snacks.nvim",
