@@ -34,6 +34,25 @@ require("lazy").setup({
     },
 
     {
+      "neovim/nvim-lspconfig",
+      opts = {
+        inlay_hints = { enabled = false },
+      },
+    },
+
+    {
+      "f-person/git-blame.nvim",
+      event = "VeryLazy",
+      opts = {
+        enabled = true,
+        highlight_group = "NonText",
+        message_template = "     <author>, <date>, <summary>",
+        date_format = "%r",
+        delay = 1,
+      },
+    },
+
+    {
       "folke/snacks.nvim",
       priority = 1000,
       lazy = false,
@@ -57,6 +76,15 @@ require("lazy").setup({
         notifier = {
           enabled = true,
           timeout = 5000,
+        },
+        picker = {
+          sources = {
+            explorer = {
+              layout = {
+                preset = "right",
+              },
+            },
+          },
         },
         quickfile = { enabled = true },
         scroll = { enabled = true },
@@ -176,7 +204,7 @@ require("lazy").setup({
         vim.list_extend(opts.ensure_installed, {
           "go",
           "tsx",
-          "typescript"
+          "typescript",
         })
       end,
     },
@@ -220,3 +248,5 @@ require("lazy").setup({
     },
   },
 })
+
+vim.o.cursorline = false
